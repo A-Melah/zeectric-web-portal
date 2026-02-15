@@ -49,12 +49,12 @@ export default function Hero() {
             >
               Explore Services
             </Link>
-            <Link 
+            {/* <Link 
               href="/projects" 
               className="font-heading px-8 py-4 md:px-10 md:py-5 bg-white/5 hover:bg-white/10 text-white border border-white/20 backdrop-blur-md rounded-2xl font-bold text-center transition-all uppercase tracking-widest text-sm active:scale-[0.98]"
             >
               Track Record
-            </Link>
+            </Link> */}
           </div>
 
           {/* ================= IMPACT STATS: RESPONSIVE GRID ================= */}

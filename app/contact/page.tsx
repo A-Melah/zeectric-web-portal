@@ -15,6 +15,8 @@ export default function ContactPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
+  // Replace 'YOUR_FORMSPREE_ID' with the ID provided in your Formspree dashboard
+  const formspreeEndpoint = "https://formspree.io/f/YOUR_FORMSPREE_ID";
   const standardEmbed = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3975.836885387926!2d7.025424574979848!3d4.815340395160408!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1069cd74ec33cb2b%3A0xa025c5d83c35bcaf!2s146%20Trans-Amadi%20Industrial%20Layout%20Rd%2C%20Trans%20Amadi%2C%20Port%20Harcourt%20500102%2C%20Rivers!5e0!3m2!1sen!2sng!4v1715423854123!5m2!1sen!2sng";
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -25,13 +27,25 @@ export default function ContactPage() {
     const formData = new FormData(form);
     
     try {
-      await fetch("/", {
+      const response = await fetch(formspreeEndpoint, {
         method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams(formData as any).toString(),
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
       });
-      setSubmitted(true);
-      form.reset();
+
+      if (response.ok) {
+        setSubmitted(true);
+        form.reset();
+      } else {
+        const data = await response.json();
+        if (Object.hasOwn(data, 'errors')) {
+          alert(data["errors"].map((error: any) => error["message"]).join(", "));
+        } else {
+          alert("Oops! There was a problem submitting your form.");
+        }
+      }
     } catch (error) {
       console.error("Submission error:", error);
       alert("Submission failed. Please try again or email info@zeectric.ng directly.");
@@ -111,12 +125,12 @@ export default function ContactPage() {
               </div>
             </div>
 
-            {/* RIGHT: COMPACT FORM (NETLIFY ENABLED) */}
+            {/* RIGHT: COMPACT FORM (FORMSPREE ENABLED) */}
             <div className="lg:col-span-7">
               <div className="bg-white p-8 md:p-12 rounded-[2.5rem] border border-slate-200 shadow-2xl shadow-slate-100">
                 {submitted ? (
                   <div className="text-center py-12 space-y-6">
-                    <div className="w-20 h-20 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <div className="w-20 h-20 bg-emerald-100 text-zeectric-blue rounded-full flex items-center justify-center mx-auto mb-6">
                       <Globe className="w-10 h-10" />
                     </div>
                     <h3 className="font-heading text-3xl font-bold text-zeectric-slate uppercase">Message Received</h3>
@@ -136,19 +150,9 @@ export default function ContactPage() {
                     </div>
 
                     <form 
-                      name="contact" 
-                      method="POST" 
-                      data-netlify="true" 
-                      data-netlify-honeypot="bot-field"
                       onSubmit={handleSubmit}
                       className="space-y-5"
                     >
-                      {/* Hidden fields for Netlify */}
-                      <input type="hidden" name="form-name" value="contact" />
-                      <p className="hidden">
-                        <label htmlFor="bot-field">Don’t fill this out if you’re human: <input id="bot-field" name="bot-field" /></label>
-                      </p>
-
                       <div className="grid md:grid-cols-2 gap-5">
                         <div className="space-y-2">
                           <label htmlFor="name" className="font-heading text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Full Name</label>
@@ -168,6 +172,7 @@ export default function ContactPage() {
                         <textarea id="message" name="message" required rows={5} placeholder="Describe your power or engineering needs..." className="font-sans w-full px-6 py-4 rounded-2xl border border-slate-100 focus:ring-4 focus:ring-zeectric-blue/10 focus:border-zeectric-blue outline-none bg-slate-50 text-base font-bold transition-all resize-none" />
                       </div>
                       <button 
+                        type="submit"
                         disabled={isSubmitting}
                         className="font-heading w-full py-6 bg-zeectric-blue text-white rounded-2xl font-bold text-lg hover:bg-zeectric-slate transition-all shadow-xl shadow-zeectric-blue/20 flex items-center justify-center gap-3 uppercase tracking-widest active:scale-[0.98] disabled:opacity-70"
                       >
@@ -210,7 +215,7 @@ export default function ContactPage() {
                 146, Trans-Amadi Industrial Layout, Port Harcourt, Rivers State.
               </p>
               <Link 
-                href="https://maps.google.com/?q=146+Trans-Amadi+Industrial+Layout+Rd+Port+Harcourt" 
+                href="https://share.google/BUKebM1C12q6xGLFp" 
                 target="_blank"
                 className="font-heading text-[10px] font-bold text-zeectric-blue hover:text-zeectric-slate flex items-center gap-1 transition-colors uppercase tracking-widest"
               >
