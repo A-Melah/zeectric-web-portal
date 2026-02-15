@@ -5,21 +5,21 @@ import Image from 'next/image';
 const projects = [
   {
     title: "15km Transmission Line",
-    location: "Eliozu to Eneka",
+    // location: "Eliozu to Eneka",
     year: "2019",
     description: "Successful engineering and construction of a major high-voltage transmission route spanning 15 kilometers.",
     image: "/images/home/transmission.avif"
   },
   {
     title: "Agip Base Substations",
-    location: "Port Harcourt",
+    // location: "Port Harcourt",
     year: "2020",
     description: "Full-scale installation and commissioning of two critical injection substations to enhance regional power stability.",
     image: "/images/home/substation.avif"
   },
   {
     title: "PHED Rehabilitation",
-    location: "Akpajo to Onne",
+    // location: "Akpajo to Onne",
     year: "2021",
     description: "Extensive rehabilitation of a 91.5km 33KV power line for the Port Harcourt Electricity Distribution company.",
     image: "/images/home/phed.avif"
@@ -43,13 +43,13 @@ export default function ProjectShowcase() {
               Successfully delivering high-profile engineering projects across Nigeria since our incorporation in 2019.
             </p>
           </div>
-          <Link 
+          {/* <Link 
             href="/projects" 
             className="font-heading inline-flex items-center gap-2 text-sm font-bold text-zeectric-blue uppercase tracking-widest hover:text-zeectric-slate transition-colors group"
           >
             View All Projects 
             <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
-          </Link>
+          </Link> */}
         </div>
 
         {/* ================= GRID ================= */}
@@ -78,9 +78,9 @@ export default function ProjectShowcase() {
               {/* Content */}
               <div className="p-10 flex flex-col grow">
                 <div className="flex items-center gap-2 mb-4">
-                  <MapPin className="w-4 h-4 text-zeectric-blue" />
+                  {/* <MapPin className="w-4 h-4 text-zeectric-blue" /> */}
                   <span className="font-heading text-[10px] font-bold text-slate-500 uppercase tracking-[0.2em]">
-                    {p.location}
+                    {/* {p.location} */}
                   </span>
                 </div>
                 
@@ -92,14 +92,14 @@ export default function ProjectShowcase() {
                   {p.description}
                 </p>
 
-                <div className="pt-6 border-t border-slate-200">
+                {/* <div className="pt-6 border-t border-slate-200">
                   <Link 
                     href="/projects" 
                     className="font-heading inline-flex items-center gap-2 text-xs font-bold text-zeectric-slate uppercase tracking-tighter hover:text-zeectric-blue transition-colors"
                   >
                     View Details <ArrowRight className="w-4 h-4" />
                   </Link>
-                </div>
+                </div> */}
               </div>
             </article>
           ))}

@@ -58,7 +58,7 @@ export default function Footer() {
               <li className="flex items-start gap-4 group">
                 <MapPin className="w-5 h-5 text-zeectric-blue shrink-0 group-hover:scale-110 transition-transform" />
                 <span className="leading-relaxed">
-                  13, Chief Ejims Street, Trans Amadi, <br />
+                  146, Trans-Amadi, Industrial Layout, <br />
                   Port Harcourt, Rivers State, Nigeria.
                 </span>
               </li>
