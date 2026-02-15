@@ -1,7 +1,7 @@
 import Hero from '@/components/Hero';
 import TrustRibbon from '@/components/TrustRibbon';
 import Services from '@/components/Services';
-import ProjectShowcase from '@/components/ProjectShowcase';
+// import ProjectShowcase from '@/components/_ProjectShowcase';
 
 export default function Home() {
   return (
@@ -9,7 +9,7 @@ export default function Home() {
       <Hero />
       <TrustRibbon />
       <Services />
-      <ProjectShowcase />
+      {/* <ProjectShowcase /> */}
     </>
   );
 }
