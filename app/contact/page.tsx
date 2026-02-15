@@ -16,7 +16,7 @@ export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
 
   // Replace 'YOUR_FORMSPREE_ID' with the ID provided in your Formspree dashboard
-  const formspreeEndpoint = "https://formspree.io/f/YOUR_FORMSPREE_ID";
+  const formspreeEndpoint = "https://formspree.io/f/mgolkqyv";
   const standardEmbed = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3975.836885387926!2d7.025424574979848!3d4.815340395160408!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1069cd74ec33cb2b%3A0xa025c5d83c35bcaf!2s146%20Trans-Amadi%20Industrial%20Layout%20Rd%2C%20Trans%20Amadi%2C%20Port%20Harcourt%20500102%2C%20Rivers!5e0!3m2!1sen!2sng!4v1715423854123!5m2!1sen!2sng";
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
