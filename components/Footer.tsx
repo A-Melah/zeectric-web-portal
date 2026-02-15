@@ -106,10 +106,10 @@ export default function Footer() {
           <p className="font-heading text-[10px] font-medium text-slate-500 uppercase tracking-widest">
             &copy; {currentYear} ZEECTRIC ENGINEERING NIG. LTD. ALL RIGHTS RESERVED.
           </p>
-          <div className="flex gap-8 font-heading text-[10px] font-bold text-slate-500 uppercase tracking-widest">
+          {/* <div className="flex gap-8 font-heading text-[10px] font-bold text-slate-500 uppercase tracking-widest">
             <Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
             <Link href="/terms" className="hover:text-white transition-colors">Terms of Service</Link>
-          </div>
+          </div> */}
         </div>
       </div>
     </footer>
